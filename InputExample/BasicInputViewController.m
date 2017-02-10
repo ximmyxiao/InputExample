@@ -9,6 +9,7 @@
 #import "BasicInputViewController.h"
 #import "InputAccessoryView.h"
 
+#define ACCESSORY_INPUT_BAR_HEIGHT (50)
 
 @interface BasicInputViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong) UIView* contentView;
@@ -39,12 +40,28 @@
     [self.view addConstraint:self.contentBottomConstraint];
     [self.view addConstraint:leadingConstraint];
     [self.view addConstraint:tailingConstraint];
+    
+    InputAccessoryView* accessoryView = [InputAccessoryView InputAccessoryViewInstance];
+//    accessoryView.backgroundColor = [UIColor greenColor];
+    accessoryView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView addSubview:accessoryView];
+    
+    NSLayoutConstraint* accessoryBottomConstraint = [accessoryView.bottomAnchor constraintEqualToAnchor:_contentView.bottomAnchor constant:0];
+    NSLayoutConstraint* accessoryLeadingConstraint = [accessoryView.leadingAnchor constraintEqualToAnchor:_contentView.leadingAnchor constant:0];
+    NSLayoutConstraint* accessoryTrailingConstraint = [accessoryView.trailingAnchor constraintEqualToAnchor:_contentView.trailingAnchor constant:0];
+    NSLayoutConstraint* accessoryHeightConstraint = [accessoryView.heightAnchor constraintEqualToConstant:ACCESSORY_INPUT_BAR_HEIGHT];
+    [_contentView addConstraint:accessoryBottomConstraint];
+    [_contentView addConstraint:accessoryLeadingConstraint];
+    [_contentView addConstraint:accessoryTrailingConstraint];
+    [accessoryView addConstraint:accessoryHeightConstraint];
+    
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     [self contructContent];
     [self addKeyboardNotificationObserve];
     
@@ -66,14 +83,35 @@
 }
 */
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
 
 - (void)addKeyboardNotificationObserve
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChangedFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChangedFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    
 }
 
 - (void)keyboardChangedFrame:(NSNotification*)notification
 {
+    float animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationCurve animationCurve = [[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+    CGRect keyboardEndFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
+    [UIView beginAnimations:@"Animation" context:NULL];
+    [UIView setAnimationCurve:animationCurve];
+    [UIView setAnimationDuration:animationDuration];
+    self.contentBottomConstraint.constant = - ([UIScreen mainScreen].bounds.size.height - keyboardEndFrame.origin.y);
+    [self.view layoutIfNeeded];
+    [UIView commitAnimations];
+    
+//    [UIView animateWithDuration:animationDuration animations:^{
+//        self.contentBottomConstraint.constant = - ([UIScreen mainScreen].bounds.size.height - keyboardEndFrame.origin.y);
+//        [self.view layoutIfNeeded];
+//
+//    }];
 }
 @end

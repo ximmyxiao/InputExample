@@ -8,6 +8,10 @@
 
 #import "InputAccessoryView.h"
 
+@interface InputAccessoryView()<UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@end
+
 @implementation InputAccessoryView
 
 /*
@@ -17,5 +21,26 @@
     // Drawing code
 }
 */
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.textView.layer.borderWidth = 1;
+}
++ (instancetype) InputAccessoryViewInstance
+{
+//    UIView* view = [UIView new];
+//    view.backgroundColor = [UIColor redColor];
+//    return view;
+    
+    NSArray* objects = [[NSBundle mainBundle] loadNibNamed:@"InputAccessoryView"owner:self options:nil];
+    return objects[0];
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    NSLog(@"textViewDidChange");
+}
 
 @end

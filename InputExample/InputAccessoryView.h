@@ -10,4 +10,6 @@
 
 @interface InputAccessoryView : UIView
 
++ (instancetype) InputAccessoryViewInstance;
+
 @end
