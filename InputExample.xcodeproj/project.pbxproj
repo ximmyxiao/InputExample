@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		992D48621E4D7C0000D832E3 /* InputAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992D48611E4D7C0000D832E3 /* InputAccessoryView.xib */; };
+		992D48651E4DBBF300D832E3 /* AutoGrowTextViewV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 992D48641E4DBBF300D832E3 /* AutoGrowTextViewV2.m */; };
 		99A391411E4C5AEE0063B989 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A391401E4C5AEE0063B989 /* main.m */; };
 		99A391441E4C5AEE0063B989 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A391431E4C5AEE0063B989 /* AppDelegate.m */; };
 		99A391471E4C5AEE0063B989 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A391461E4C5AEE0063B989 /* ViewController.m */; };
@@ -20,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		992D48611E4D7C0000D832E3 /* InputAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputAccessoryView.xib; sourceTree = "<group>"; };
+		992D48631E4DBBF300D832E3 /* AutoGrowTextViewV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoGrowTextViewV2.h; sourceTree = "<group>"; };
+		992D48641E4DBBF300D832E3 /* AutoGrowTextViewV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoGrowTextViewV2.m; sourceTree = "<group>"; };
 		99A3913C1E4C5AEE0063B989 /* InputExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InputExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A391401E4C5AEE0063B989 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		99A391421E4C5AEE0063B989 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 		99A3913E1E4C5AEE0063B989 /* InputExample */ = {
 			isa = PBXGroup;
 			children = (
+				992D48631E4DBBF300D832E3 /* AutoGrowTextViewV2.h */,
+				992D48641E4DBBF300D832E3 /* AutoGrowTextViewV2.m */,
 				99A391421E4C5AEE0063B989 /* AppDelegate.h */,
 				99A391431E4C5AEE0063B989 /* AppDelegate.m */,
 				99A391451E4C5AEE0063B989 /* ViewController.h */,
@@ -168,6 +173,7 @@
 				99A391471E4C5AEE0063B989 /* ViewController.m in Sources */,
 				99A3915B1E4C5B5E0063B989 /* InputAccessoryView.m in Sources */,
 				99A391441E4C5AEE0063B989 /* AppDelegate.m in Sources */,
+				992D48651E4DBBF300D832E3 /* AutoGrowTextViewV2.m in Sources */,
 				99A391581E4C5B220063B989 /* BasicInputViewController.m in Sources */,
 				99A391411E4C5AEE0063B989 /* main.m in Sources */,
 			);

@@ -7,9 +7,9 @@
 //
 
 #import "InputAccessoryView.h"
-
+#import "AutoGrowTextViewV2.h"
 @interface InputAccessoryView()<UITextViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet AutoGrowTextViewV2 *textView;
 @end
 
 @implementation InputAccessoryView
@@ -27,6 +27,8 @@
     [super awakeFromNib];
     self.textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.textView.layer.borderWidth = 1;
+    self.textView.layoutManager.allowsNonContiguousLayout = NO;
+//    [self.textView setMaxLinesToDisplay:5];
 }
 + (instancetype) InputAccessoryViewInstance
 {
@@ -41,6 +43,10 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
     NSLog(@"textViewDidChange");
+    AutoGrowTextViewV2* autoGrowTextView = (AutoGrowTextViewV2*) textView;
+    [autoGrowTextView textViewDidChange:textView];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 @end

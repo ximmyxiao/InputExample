@@ -49,7 +49,7 @@
     NSLayoutConstraint* accessoryBottomConstraint = [accessoryView.bottomAnchor constraintEqualToAnchor:_contentView.bottomAnchor constant:0];
     NSLayoutConstraint* accessoryLeadingConstraint = [accessoryView.leadingAnchor constraintEqualToAnchor:_contentView.leadingAnchor constant:0];
     NSLayoutConstraint* accessoryTrailingConstraint = [accessoryView.trailingAnchor constraintEqualToAnchor:_contentView.trailingAnchor constant:0];
-    NSLayoutConstraint* accessoryHeightConstraint = [accessoryView.heightAnchor constraintEqualToConstant:ACCESSORY_INPUT_BAR_HEIGHT];
+    NSLayoutConstraint* accessoryHeightConstraint = [accessoryView.heightAnchor constraintGreaterThanOrEqualToConstant:ACCESSORY_INPUT_BAR_HEIGHT];
     [_contentView addConstraint:accessoryBottomConstraint];
     [_contentView addConstraint:accessoryLeadingConstraint];
     [_contentView addConstraint:accessoryTrailingConstraint];
@@ -62,6 +62,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self contructContent];
     [self addKeyboardNotificationObserve];
     

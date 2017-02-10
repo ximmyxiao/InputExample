@@ -15,12 +15,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T6w-83-H1i">
-                    <rect key="frame" x="40" y="313.5" width="255" height="40"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="255" placeholderIntrinsicHeight="40" text="1" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T6w-83-H1i" customClass="AutoGrowTextViewV2">
+                    <rect key="frame" x="40" y="5" width="255" height="657"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="jdh-OQ-eyA"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     <connections>
@@ -30,8 +27,9 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="T6w-83-H1i" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4T3-N7-EHo"/>
+                <constraint firstItem="T6w-83-H1i" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="2qJ-B6-QJD"/>
                 <constraint firstAttribute="trailing" secondItem="T6w-83-H1i" secondAttribute="trailing" constant="80" id="ITZ-k2-Z0Q"/>
+                <constraint firstAttribute="bottom" secondItem="T6w-83-H1i" secondAttribute="bottom" constant="5" id="VAs-jz-1xF"/>
                 <constraint firstItem="T6w-83-H1i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="fVc-md-aXh"/>
             </constraints>
             <connections>
