@@ -41,9 +41,9 @@
 - (CGSize)intrinsicContentSize
 {
     CGSize size =  [self sizeThatFits:CGSizeMake(self.bounds.size.width, MAXFLOAT)];
-    if (size.height > 110)
+    if (size.height > 100)
     {
-        size = CGSizeMake(size.width, 110);
+        size = CGSizeMake(size.width, 100);
     }
     return size;
 }

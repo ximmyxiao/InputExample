@@ -41,19 +41,20 @@
     [self.view addConstraint:leadingConstraint];
     [self.view addConstraint:tailingConstraint];
     
-    InputAccessoryView* accessoryView = [InputAccessoryView InputAccessoryViewInstance];
+    self.inputAccesoryView = [InputAccessoryView InputAccessoryViewInstance];
 //    accessoryView.backgroundColor = [UIColor greenColor];
-    accessoryView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.contentView addSubview:accessoryView];
+    self.inputAccesoryView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView addSubview:self.inputAccesoryView];
     
-    NSLayoutConstraint* accessoryBottomConstraint = [accessoryView.bottomAnchor constraintEqualToAnchor:_contentView.bottomAnchor constant:0];
-    NSLayoutConstraint* accessoryLeadingConstraint = [accessoryView.leadingAnchor constraintEqualToAnchor:_contentView.leadingAnchor constant:0];
-    NSLayoutConstraint* accessoryTrailingConstraint = [accessoryView.trailingAnchor constraintEqualToAnchor:_contentView.trailingAnchor constant:0];
-    NSLayoutConstraint* accessoryHeightConstraint = [accessoryView.heightAnchor constraintGreaterThanOrEqualToConstant:ACCESSORY_INPUT_BAR_HEIGHT];
+    NSLayoutConstraint* accessoryBottomConstraint = [self.inputAccesoryView.bottomAnchor constraintEqualToAnchor:_contentView.bottomAnchor constant:0];
+    NSLayoutConstraint* accessoryLeadingConstraint = [self.inputAccesoryView.leadingAnchor constraintEqualToAnchor:_contentView.leadingAnchor constant:0];
+    NSLayoutConstraint* accessoryTrailingConstraint = [self.inputAccesoryView.trailingAnchor constraintEqualToAnchor:_contentView.trailingAnchor constant:0];
+    NSLayoutConstraint* accessoryHeightConstraint = [self.inputAccesoryView.heightAnchor constraintGreaterThanOrEqualToConstant:ACCESSORY_INPUT_BAR_HEIGHT];
     [_contentView addConstraint:accessoryBottomConstraint];
     [_contentView addConstraint:accessoryLeadingConstraint];
     [_contentView addConstraint:accessoryTrailingConstraint];
-    [accessoryView addConstraint:accessoryHeightConstraint];
+    [self.inputAccesoryView addConstraint:accessoryHeightConstraint];
+    
     
 }
 
@@ -65,8 +66,12 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self contructContent];
     [self addKeyboardNotificationObserve];
-    
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.inputAccesoryView becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
