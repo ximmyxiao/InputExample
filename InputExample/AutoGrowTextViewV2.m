@@ -24,7 +24,7 @@
     if (self)
     {
         self.delegate = self;
-        self.textContainerInset = UIEdgeInsetsMake(12, 10, 12, 10);
+        self.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
         self.font = [UIFont systemFontOfSize:16];
 
     }
@@ -41,9 +41,9 @@
 - (CGSize)intrinsicContentSize
 {
     CGSize size =  [self sizeThatFits:CGSizeMake(self.bounds.size.width, MAXFLOAT)];
-    if (size.height > 110)
+    if (size.height > 98)
     {
-        size = CGSizeMake(size.width, 110);
+        size = CGSizeMake(size.width, 98);
     }
     return size;
 }
@@ -54,6 +54,10 @@
     [self layoutIfNeeded];
 }
 
+- (void)layoutIfNeeded
+{
+    [super layoutIfNeeded];
+}
 
 
 @end

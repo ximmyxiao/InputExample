@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="255" placeholderIntrinsicHeight="40" text="1" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T6w-83-H1i" customClass="AutoGrowTextViewV2">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="255" placeholderIntrinsicHeight="40" text="爱上飞机沙发空间按开房间啊及覅按时及覅既费时飞机爱谁就放大设计费按缴费卡电视剧覅大街上疯狂就爱上咖啡按时缴费卡上就付款案件发卡机福利卡设计费a" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T6w-83-H1i" customClass="AutoGrowTextViewV2">
                     <rect key="frame" x="40" y="5" width="255" height="657"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
