@@ -28,7 +28,7 @@
 - (void)contructContent
 {
     self.contentView = [UIView new];
-    self.contentView .backgroundColor = [UIColor blueColor];
+    self.contentView .backgroundColor = [UIColor whiteColor];
     self.contentView .translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.contentView ];
     

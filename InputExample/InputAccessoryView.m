@@ -29,6 +29,7 @@
     self.textView.layer.borderWidth = 1;
     self.textView.layoutManager.allowsNonContiguousLayout = NO;
 //    [self.textView setMaxLinesToDisplay:5];
+    self.backgroundColor = HEXCOLOR(0xf4f4f4);
 }
 + (instancetype) InputAccessoryViewInstance
 {
