@@ -49,9 +49,4 @@
     [self layoutIfNeeded];
 }
 
-- (BOOL)becomeFirstResponder
-{
-    return [self.textView becomeFirstResponder];
-}
-
 @end
