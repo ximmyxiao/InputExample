@@ -10,12 +10,13 @@
 #import "InputAccessoryView.h"
 
 #define ACCESSORY_INPUT_BAR_HEIGHT (50)
-
+#define PANEL_HEIGHT (223)
 @interface BasicInputViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong) UIView* contentView;
 @property(nonatomic,strong) UITableView* tableView;
 @property(nonatomic,strong) InputAccessoryView* inputAccesoryView;
 @property(nonatomic,strong) NSLayoutConstraint* contentBottomConstraint;
+@property(nonatomic,strong) UIView* emojiPanel;
 @end
 
 @implementation BasicInputViewController
@@ -54,6 +55,10 @@
     [_contentView addConstraint:accessoryLeadingConstraint];
     [_contentView addConstraint:accessoryTrailingConstraint];
     [accessoryView addConstraint:accessoryHeightConstraint];
+    
+    self.emojiPanel = [UIView new];
+    self.emojiPanel.backgroundColor = HEXCOLOR(0xf3f4f6);
+    
     
 }
 
