@@ -25,8 +25,10 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.textView.layer.borderWidth = 1;
+    UIColor* color = HEXCOLOR(0xdddddd);
+    self.textView.layer.borderColor = color.CGColor;
+    self.textView.layer.borderWidth = 0.5;
+    self.textView.layer.cornerRadius = 5;
     self.textView.layoutManager.allowsNonContiguousLayout = NO;
 //    [self.textView setMaxLinesToDisplay:5];
     self.backgroundColor = HEXCOLOR(0xf4f4f4);
