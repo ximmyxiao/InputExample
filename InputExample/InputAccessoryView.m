@@ -10,6 +10,7 @@
 #import "AutoGrowTextViewV2.h"
 @interface InputAccessoryView()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet AutoGrowTextViewV2 *textView;
+@property (weak, nonatomic) IBOutlet UIButton *emojiBtn;
 @end
 
 @implementation InputAccessoryView
@@ -32,6 +33,13 @@
     self.textView.layoutManager.allowsNonContiguousLayout = NO;
 //    [self.textView setMaxLinesToDisplay:5];
     self.backgroundColor = HEXCOLOR(0xf4f4f4);
+    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction)];
+    [self addGestureRecognizer:gesture];
+}
+
+- (void)tapGestureAction
+{
+    
 }
 + (instancetype) InputAccessoryViewInstance
 {
@@ -52,4 +60,34 @@
     [self layoutIfNeeded];
 }
 
+- (IBAction)emojiBtnAction:(id)sender {
+    UIButton* btn = (UIButton*) sender;
+    if (btn.selected == NO)
+    {
+        [self.delegate inputAccessoryViewDidSelect:OPERATION_SHOW_EMOJI];
+        [btn setSelected:YES];
+    }
+    else
+    {
+        [self.delegate inputAccessoryViewDidSelect:OPERATION_SHOW_KEYBOARD];
+        [btn setSelected:NO];
+    }
+    
+}
+
+- (void)keyboardIsShow
+{
+    [self.emojiBtn setSelected:NO];
+
+}
+
+- (BOOL)becomeFirstResponder
+{
+    return [self.textView becomeFirstResponder];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"view touchesEnded");
+}
 @end

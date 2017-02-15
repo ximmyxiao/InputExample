@@ -9,14 +9,26 @@
 #import "BasicInputViewController.h"
 #import "InputAccessoryView.h"
 
+typedef NS_ENUM(NSInteger,INPUT_KEYBOARD_TYPE) {
+    
+    INPUT_KEYBOARD_TYPE_NONE = 0,
+    INPUT_KEYBOARD_TYPE_KEYBOARD,
+    INPUT_KEYBOARD_TYPE_PANEL,
+};
+
 #define ACCESSORY_INPUT_BAR_HEIGHT (50)
 #define PANEL_HEIGHT (223)
-@interface BasicInputViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface BasicInputViewController ()<InputAccessoryViewDelegate, UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong) UIView* contentView;
 @property(nonatomic,strong) UITableView* tableView;
 @property(nonatomic,strong) InputAccessoryView* inputAccesoryView;
 @property(nonatomic,strong) NSLayoutConstraint* contentBottomConstraint;
-@property(nonatomic,strong) UIView* emojiPanel;
+@property(nonatomic,strong) NSLayoutConstraint* panelHeightConstraint;
+@property(nonatomic,strong) UIView* operationPanel;
+@property(nonatomic,assign) INPUT_KEYBOARD_TYPE inputType;
+@property(nonatomic,assign) CGRect keyboardFrame;
+@property(nonatomic,assign) UIViewAnimationCurve animationCurve;
+@property(nonatomic,assign) float animationDuration;
 @end
 
 @implementation BasicInputViewController
@@ -24,6 +36,43 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)resetConstraints
+{
+        [UIView beginAnimations:@"Animation" context:NULL];
+        [UIView setAnimationCurve:self.animationCurve];
+        [UIView setAnimationDuration:self.animationDuration];
+        switch (_inputType) {
+            case INPUT_KEYBOARD_TYPE_NONE:
+                self.panelHeightConstraint.constant = 0;
+                self.contentBottomConstraint.constant = 0;
+                break;
+            case INPUT_KEYBOARD_TYPE_KEYBOARD:
+//                self.panelHeightConstraint.constant = 0;
+//                self.contentBottomConstraint.constant = - ([UIScreen mainScreen].bounds.size.height - self.keyboardFrame.origin.y);
+                [self.inputAccesoryView keyboardIsShow];
+                break;
+            case INPUT_KEYBOARD_TYPE_PANEL:
+                self.panelHeightConstraint.constant = PANEL_HEIGHT;
+                self.contentBottomConstraint.constant = 0;
+                break;
+            default:
+                break;
+        }
+        [self.view layoutIfNeeded];
+        [UIView commitAnimations];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+
+
+    }];
+}
+
+- (void)setInputType:(INPUT_KEYBOARD_TYPE)inputType
+{
+    _inputType = inputType;
+    [self resetConstraints];
 }
 
 - (void)contructContent
@@ -42,23 +91,37 @@
     [self.view addConstraint:leadingConstraint];
     [self.view addConstraint:tailingConstraint];
     
-    InputAccessoryView* accessoryView = [InputAccessoryView InputAccessoryViewInstance];
-//    accessoryView.backgroundColor = [UIColor greenColor];
-    accessoryView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.contentView addSubview:accessoryView];
+    self.inputAccesoryView = [InputAccessoryView InputAccessoryViewInstance];
+    self.inputAccesoryView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.inputAccesoryView.delegate = self;
+    [self.contentView addSubview:self.inputAccesoryView];
     
-    NSLayoutConstraint* accessoryBottomConstraint = [accessoryView.bottomAnchor constraintEqualToAnchor:_contentView.bottomAnchor constant:0];
-    NSLayoutConstraint* accessoryLeadingConstraint = [accessoryView.leadingAnchor constraintEqualToAnchor:_contentView.leadingAnchor constant:0];
-    NSLayoutConstraint* accessoryTrailingConstraint = [accessoryView.trailingAnchor constraintEqualToAnchor:_contentView.trailingAnchor constant:0];
-    NSLayoutConstraint* accessoryHeightConstraint = [accessoryView.heightAnchor constraintGreaterThanOrEqualToConstant:ACCESSORY_INPUT_BAR_HEIGHT];
+    self.operationPanel = [UIView new];
+    self.operationPanel.backgroundColor = [UIColor yellowColor];//HEXCOLOR(0xf3f4f6);
+    self.operationPanel.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [_contentView addSubview:self.operationPanel];
+    
+    
+    NSLayoutConstraint* accessoryBottomConstraint = [self.inputAccesoryView.bottomAnchor constraintEqualToAnchor:self.operationPanel.topAnchor constant:0];
+    NSLayoutConstraint* accessoryLeadingConstraint = [self.inputAccesoryView.leadingAnchor constraintEqualToAnchor:_contentView.leadingAnchor constant:0];
+    NSLayoutConstraint* accessoryTrailingConstraint = [self.inputAccesoryView.trailingAnchor constraintEqualToAnchor:_contentView.trailingAnchor constant:0];
+    NSLayoutConstraint* accessoryHeightConstraint = [self.inputAccesoryView.heightAnchor constraintGreaterThanOrEqualToConstant:ACCESSORY_INPUT_BAR_HEIGHT];
     [_contentView addConstraint:accessoryBottomConstraint];
     [_contentView addConstraint:accessoryLeadingConstraint];
     [_contentView addConstraint:accessoryTrailingConstraint];
-    [accessoryView addConstraint:accessoryHeightConstraint];
+    [self.inputAccesoryView addConstraint:accessoryHeightConstraint];
     
-    self.emojiPanel = [UIView new];
-    self.emojiPanel.backgroundColor = HEXCOLOR(0xf3f4f6);
+
     
+    NSLayoutConstraint* panelBottomConstraint = [self.operationPanel.bottomAnchor constraintEqualToAnchor:_contentView.bottomAnchor constant:0];
+    NSLayoutConstraint* panelLeadingConstraint = [self.operationPanel.leadingAnchor constraintEqualToAnchor:_contentView.leadingAnchor constant:0];
+    NSLayoutConstraint* panelTrailingConstraint = [self.operationPanel.trailingAnchor constraintEqualToAnchor:_contentView.trailingAnchor constant:0];
+    self.panelHeightConstraint = [self.operationPanel.heightAnchor constraintGreaterThanOrEqualToConstant:0];
+    [_contentView addConstraint:panelBottomConstraint];
+    [_contentView addConstraint:panelLeadingConstraint];
+    [_contentView addConstraint:panelTrailingConstraint];
+    [self.operationPanel addConstraint: self.panelHeightConstraint];
     
 }
 
@@ -70,6 +133,9 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self contructContent];
     [self addKeyboardNotificationObserve];
+    
+    self.animationCurve = 7;
+    self.animationDuration = 0.25;
     
     
 }
@@ -91,33 +157,57 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+    NSLog(@"vc touchesEnded");
+
+    self.inputType = INPUT_KEYBOARD_TYPE_NONE;
     [self.view endEditing:YES];
 }
 
 - (void)addKeyboardNotificationObserve
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChangedFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+
     
     
 }
 
-- (void)keyboardChangedFrame:(NSNotification*)notification
+- (void)keyboardWillChangeFrame:(NSNotification*)notification
 {
-    float animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    UIViewAnimationCurve animationCurve = [[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
-    CGRect keyboardEndFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    self.animationCurve = [[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+    self.keyboardFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     [UIView beginAnimations:@"Animation" context:NULL];
-    [UIView setAnimationCurve:animationCurve];
-    [UIView setAnimationDuration:animationDuration];
-    self.contentBottomConstraint.constant = - ([UIScreen mainScreen].bounds.size.height - keyboardEndFrame.origin.y);
-    [self.view layoutIfNeeded];
+    [UIView setAnimationCurve:self.animationCurve];
+    [UIView setAnimationDuration:self.animationDuration];
+    self.panelHeightConstraint.constant = 0;
+    self.contentBottomConstraint.constant = - ([UIScreen mainScreen].bounds.size.height - self.keyboardFrame.origin.y);    [self.view layoutIfNeeded];
     [UIView commitAnimations];
-    
+    if (self.keyboardFrame.origin.y < [[UIScreen mainScreen] bounds].size.height)
+    {
+        self.inputType = INPUT_KEYBOARD_TYPE_KEYBOARD;
+    }
 //    [UIView animateWithDuration:animationDuration animations:^{
 //        self.contentBottomConstraint.constant = - ([UIScreen mainScreen].bounds.size.height - keyboardEndFrame.origin.y);
 //        [self.view layoutIfNeeded];
 //
 //    }];
+}
+
+
+#pragma mark InputAccessoryViewDelegate
+- (void)inputAccessoryViewDidSelect:(INPUT_OPERATION_ENUM)operation
+{
+    if (operation != OPERATION_SHOW_KEYBOARD)
+    {
+        [self.view endEditing:YES];
+        self.inputType = INPUT_KEYBOARD_TYPE_PANEL;
+    }
+    else
+    {
+        self.inputType = INPUT_KEYBOARD_TYPE_KEYBOARD;
+        [self.inputAccesoryView becomeFirstResponder];
+    }
 }
 @end
