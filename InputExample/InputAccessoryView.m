@@ -33,8 +33,8 @@
     self.textView.layoutManager.allowsNonContiguousLayout = NO;
 //    [self.textView setMaxLinesToDisplay:5];
     self.backgroundColor = HEXCOLOR(0xf4f4f4);
-    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction)];
-    [self addGestureRecognizer:gesture];
+//    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction)];
+//    [self addGestureRecognizer:gesture];
 }
 
 - (void)tapGestureAction
@@ -90,4 +90,15 @@
 {
     NSLog(@"view touchesEnded");
 }
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+}
+
+//- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    
+//}
+//- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    
+//}
 @end

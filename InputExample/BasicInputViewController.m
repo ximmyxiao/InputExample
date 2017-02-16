@@ -8,6 +8,7 @@
 
 #import "BasicInputViewController.h"
 #import "InputAccessoryView.h"
+#import "PanelsContainerView.h"
 
 typedef NS_ENUM(NSInteger,INPUT_KEYBOARD_TYPE) {
     
@@ -22,9 +23,9 @@ typedef NS_ENUM(NSInteger,INPUT_KEYBOARD_TYPE) {
 @property(nonatomic,strong) UIView* contentView;
 @property(nonatomic,strong) UITableView* tableView;
 @property(nonatomic,strong) InputAccessoryView* inputAccesoryView;
+@property(nonatomic,strong) PanelsContainerView* panelContainerView;
 @property(nonatomic,strong) NSLayoutConstraint* contentBottomConstraint;
 @property(nonatomic,strong) NSLayoutConstraint* panelHeightConstraint;
-@property(nonatomic,strong) UIView* operationPanel;
 @property(nonatomic,assign) INPUT_KEYBOARD_TYPE inputType;
 @property(nonatomic,assign) CGRect keyboardFrame;
 @property(nonatomic,assign) UIViewAnimationCurve animationCurve;
@@ -96,14 +97,14 @@ typedef NS_ENUM(NSInteger,INPUT_KEYBOARD_TYPE) {
     self.inputAccesoryView.delegate = self;
     [self.contentView addSubview:self.inputAccesoryView];
     
-    self.operationPanel = [UIView new];
-    self.operationPanel.backgroundColor = [UIColor yellowColor];//HEXCOLOR(0xf3f4f6);
-    self.operationPanel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.panelContainerView = [PanelsContainerView new];
+    self.panelContainerView.backgroundColor = [UIColor yellowColor];//HEXCOLOR(0xf3f4f6);
+    self.panelContainerView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [_contentView addSubview:self.operationPanel];
+    [_contentView addSubview:self.panelContainerView];
     
     
-    NSLayoutConstraint* accessoryBottomConstraint = [self.inputAccesoryView.bottomAnchor constraintEqualToAnchor:self.operationPanel.topAnchor constant:0];
+    NSLayoutConstraint* accessoryBottomConstraint = [self.inputAccesoryView.bottomAnchor constraintEqualToAnchor:self.panelContainerView.topAnchor constant:0];
     NSLayoutConstraint* accessoryLeadingConstraint = [self.inputAccesoryView.leadingAnchor constraintEqualToAnchor:_contentView.leadingAnchor constant:0];
     NSLayoutConstraint* accessoryTrailingConstraint = [self.inputAccesoryView.trailingAnchor constraintEqualToAnchor:_contentView.trailingAnchor constant:0];
     NSLayoutConstraint* accessoryHeightConstraint = [self.inputAccesoryView.heightAnchor constraintGreaterThanOrEqualToConstant:ACCESSORY_INPUT_BAR_HEIGHT];
@@ -114,14 +115,14 @@ typedef NS_ENUM(NSInteger,INPUT_KEYBOARD_TYPE) {
     
 
     
-    NSLayoutConstraint* panelBottomConstraint = [self.operationPanel.bottomAnchor constraintEqualToAnchor:_contentView.bottomAnchor constant:0];
-    NSLayoutConstraint* panelLeadingConstraint = [self.operationPanel.leadingAnchor constraintEqualToAnchor:_contentView.leadingAnchor constant:0];
-    NSLayoutConstraint* panelTrailingConstraint = [self.operationPanel.trailingAnchor constraintEqualToAnchor:_contentView.trailingAnchor constant:0];
-    self.panelHeightConstraint = [self.operationPanel.heightAnchor constraintGreaterThanOrEqualToConstant:0];
+    NSLayoutConstraint* panelBottomConstraint = [self.panelContainerView.bottomAnchor constraintEqualToAnchor:_contentView.bottomAnchor constant:0];
+    NSLayoutConstraint* panelLeadingConstraint = [self.panelContainerView.leadingAnchor constraintEqualToAnchor:_contentView.leadingAnchor constant:0];
+    NSLayoutConstraint* panelTrailingConstraint = [self.panelContainerView.trailingAnchor constraintEqualToAnchor:_contentView.trailingAnchor constant:0];
+    self.panelHeightConstraint = [self.panelContainerView.heightAnchor constraintGreaterThanOrEqualToConstant:0];
     [_contentView addConstraint:panelBottomConstraint];
     [_contentView addConstraint:panelLeadingConstraint];
     [_contentView addConstraint:panelTrailingConstraint];
-    [self.operationPanel addConstraint: self.panelHeightConstraint];
+    [self.panelContainerView addConstraint: self.panelHeightConstraint];
     
 }
 
