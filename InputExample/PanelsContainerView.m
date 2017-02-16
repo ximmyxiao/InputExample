@@ -26,6 +26,9 @@
 
 - (void)commonInit
 {
+    NSLog(@"commonInit");
+    self.backgroundColor = [UIColor clearColor];
+    
     self.emojiPanel = [EmojiPanelView new];
     self.emojiPanel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.emojiPanel];
@@ -53,9 +56,9 @@
     return self;
 }
 
-- (instancetype)init
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super init];
+    self = [super initWithCoder:aDecoder];
     if (self)
     {
         [self commonInit];
