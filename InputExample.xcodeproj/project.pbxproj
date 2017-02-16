@@ -10,9 +10,7 @@
 		992D48621E4D7C0000D832E3 /* InputAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992D48611E4D7C0000D832E3 /* InputAccessoryView.xib */; };
 		992D48651E4DBBF300D832E3 /* AutoGrowTextViewV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 992D48641E4DBBF300D832E3 /* AutoGrowTextViewV2.m */; };
 		993F6B751E52E5150010846C /* TPEmojiLabel in Resources */ = {isa = PBXBuildFile; fileRef = 993F6B741E52E5150010846C /* TPEmojiLabel */; };
-		993F6B781E5551D40010846C /* EmojiPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 993F6B771E5551D40010846C /* EmojiPanelView.m */; };
 		993F6B7B1E55522A0010846C /* MoreOperationPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 993F6B7A1E55522A0010846C /* MoreOperationPanelView.m */; };
-		993F6B7E1E55526E0010846C /* PanelsContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 993F6B7D1E55526E0010846C /* PanelsContainerView.m */; };
 		99A391411E4C5AEE0063B989 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A391401E4C5AEE0063B989 /* main.m */; };
 		99A391441E4C5AEE0063B989 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A391431E4C5AEE0063B989 /* AppDelegate.m */; };
 		99A391471E4C5AEE0063B989 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A391461E4C5AEE0063B989 /* ViewController.m */; };
@@ -21,6 +19,11 @@
 		99A3914F1E4C5AEF0063B989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3914D1E4C5AEF0063B989 /* LaunchScreen.storyboard */; };
 		99A391581E4C5B220063B989 /* BasicInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A391571E4C5B220063B989 /* BasicInputViewController.m */; };
 		99A3915B1E4C5B5E0063B989 /* InputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A3915A1E4C5B5E0063B989 /* InputAccessoryView.m */; };
+		99E26AD01E55900800F6C2B4 /* emoji in Resources */ = {isa = PBXBuildFile; fileRef = 99E26ACB1E55900800F6C2B4 /* emoji */; };
+		99E26AD11E55900800F6C2B4 /* EmojiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E26ACD1E55900800F6C2B4 /* EmojiManager.m */; };
+		99E26AD21E55900800F6C2B4 /* TPQEmojiLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E26ACF1E55900800F6C2B4 /* TPQEmojiLabel.m */; };
+		99E26AD81E55905300F6C2B4 /* EmojiPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E26AD51E55905300F6C2B4 /* EmojiPanelView.m */; };
+		99E26AD91E55905300F6C2B4 /* PanelsContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E26AD71E55905300F6C2B4 /* PanelsContainerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,13 +31,9 @@
 		992D48631E4DBBF300D832E3 /* AutoGrowTextViewV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoGrowTextViewV2.h; sourceTree = "<group>"; };
 		992D48641E4DBBF300D832E3 /* AutoGrowTextViewV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoGrowTextViewV2.m; sourceTree = "<group>"; };
 		993F6B711E51B9F20010846C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		993F6B741E52E5150010846C /* TPEmojiLabel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TPEmojiLabel; sourceTree = "<group>"; };
-		993F6B761E5551D40010846C /* EmojiPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmojiPanelView.h; path = ../EmojiPanelView.h; sourceTree = "<group>"; };
-		993F6B771E5551D40010846C /* EmojiPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmojiPanelView.m; path = ../EmojiPanelView.m; sourceTree = "<group>"; };
+		993F6B741E52E5150010846C /* TPEmojiLabel */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TPEmojiLabel; path = /Users/piaopiao/Documents/GitHub/InputExample/InputExample/TPEmojiLabel; sourceTree = "<absolute>"; };
 		993F6B791E55522A0010846C /* MoreOperationPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreOperationPanelView.h; sourceTree = "<group>"; };
 		993F6B7A1E55522A0010846C /* MoreOperationPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreOperationPanelView.m; sourceTree = "<group>"; };
-		993F6B7C1E55526E0010846C /* PanelsContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelsContainerView.h; path = ../PanelsContainerView.h; sourceTree = "<group>"; };
-		993F6B7D1E55526E0010846C /* PanelsContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PanelsContainerView.m; path = ../PanelsContainerView.m; sourceTree = "<group>"; };
 		99A3913C1E4C5AEE0063B989 /* InputExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InputExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A391401E4C5AEE0063B989 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		99A391421E4C5AEE0063B989 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -49,6 +48,15 @@
 		99A391571E4C5B220063B989 /* BasicInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInputViewController.m; sourceTree = "<group>"; };
 		99A391591E4C5B5E0063B989 /* InputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputAccessoryView.h; sourceTree = "<group>"; };
 		99A3915A1E4C5B5E0063B989 /* InputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputAccessoryView.m; sourceTree = "<group>"; };
+		99E26ACB1E55900800F6C2B4 /* emoji */ = {isa = PBXFileReference; lastKnownFileType = folder; name = emoji; path = TPEmojiLabel/emoji; sourceTree = "<group>"; };
+		99E26ACC1E55900800F6C2B4 /* EmojiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmojiManager.h; path = TPEmojiLabel/EmojiManager.h; sourceTree = "<group>"; };
+		99E26ACD1E55900800F6C2B4 /* EmojiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmojiManager.m; path = TPEmojiLabel/EmojiManager.m; sourceTree = "<group>"; };
+		99E26ACE1E55900800F6C2B4 /* TPQEmojiLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPQEmojiLabel.h; path = TPEmojiLabel/TPQEmojiLabel.h; sourceTree = "<group>"; };
+		99E26ACF1E55900800F6C2B4 /* TPQEmojiLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPQEmojiLabel.m; path = TPEmojiLabel/TPQEmojiLabel.m; sourceTree = "<group>"; };
+		99E26AD41E55905300F6C2B4 /* EmojiPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiPanelView.h; sourceTree = "<group>"; };
+		99E26AD51E55905300F6C2B4 /* EmojiPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiPanelView.m; sourceTree = "<group>"; };
+		99E26AD61E55905300F6C2B4 /* PanelsContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelsContainerView.h; sourceTree = "<group>"; };
+		99E26AD71E55905300F6C2B4 /* PanelsContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelsContainerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +89,11 @@
 		99A3913E1E4C5AEE0063B989 /* InputExample */ = {
 			isa = PBXGroup;
 			children = (
-				993F6B741E52E5150010846C /* TPEmojiLabel */,
+				99E26AD41E55905300F6C2B4 /* EmojiPanelView.h */,
+				99E26AD51E55905300F6C2B4 /* EmojiPanelView.m */,
+				99E26AD61E55905300F6C2B4 /* PanelsContainerView.h */,
+				99E26AD71E55905300F6C2B4 /* PanelsContainerView.m */,
+				99E26AD31E55901200F6C2B4 /* EmojiHelper */,
 				992D48631E4DBBF300D832E3 /* AutoGrowTextViewV2.h */,
 				992D48641E4DBBF300D832E3 /* AutoGrowTextViewV2.m */,
 				99A391421E4C5AEE0063B989 /* AppDelegate.h */,
@@ -97,10 +109,6 @@
 				99A391571E4C5B220063B989 /* BasicInputViewController.m */,
 				99A391591E4C5B5E0063B989 /* InputAccessoryView.h */,
 				99A3915A1E4C5B5E0063B989 /* InputAccessoryView.m */,
-				993F6B7C1E55526E0010846C /* PanelsContainerView.h */,
-				993F6B7D1E55526E0010846C /* PanelsContainerView.m */,
-				993F6B761E5551D40010846C /* EmojiPanelView.h */,
-				993F6B771E5551D40010846C /* EmojiPanelView.m */,
 				993F6B791E55522A0010846C /* MoreOperationPanelView.h */,
 				993F6B7A1E55522A0010846C /* MoreOperationPanelView.m */,
 				992D48611E4D7C0000D832E3 /* InputAccessoryView.xib */,
@@ -115,6 +123,18 @@
 				99A391401E4C5AEE0063B989 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		99E26AD31E55901200F6C2B4 /* EmojiHelper */ = {
+			isa = PBXGroup;
+			children = (
+				99E26ACB1E55900800F6C2B4 /* emoji */,
+				99E26ACC1E55900800F6C2B4 /* EmojiManager.h */,
+				99E26ACD1E55900800F6C2B4 /* EmojiManager.m */,
+				99E26ACE1E55900800F6C2B4 /* TPQEmojiLabel.h */,
+				99E26ACF1E55900800F6C2B4 /* TPQEmojiLabel.m */,
+			);
+			name = EmojiHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +199,7 @@
 				99A3914F1E4C5AEF0063B989 /* LaunchScreen.storyboard in Resources */,
 				99A3914C1E4C5AEF0063B989 /* Assets.xcassets in Resources */,
 				992D48621E4D7C0000D832E3 /* InputAccessoryView.xib in Resources */,
+				99E26AD01E55900800F6C2B4 /* emoji in Resources */,
 				993F6B751E52E5150010846C /* TPEmojiLabel in Resources */,
 				99A3914A1E4C5AEE0063B989 /* Main.storyboard in Resources */,
 			);
@@ -191,12 +212,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E26AD91E55905300F6C2B4 /* PanelsContainerView.m in Sources */,
+				99E26AD11E55900800F6C2B4 /* EmojiManager.m in Sources */,
 				99A391471E4C5AEE0063B989 /* ViewController.m in Sources */,
+				99E26AD21E55900800F6C2B4 /* TPQEmojiLabel.m in Sources */,
 				99A3915B1E4C5B5E0063B989 /* InputAccessoryView.m in Sources */,
-				993F6B7E1E55526E0010846C /* PanelsContainerView.m in Sources */,
+				99E26AD81E55905300F6C2B4 /* EmojiPanelView.m in Sources */,
 				993F6B7B1E55522A0010846C /* MoreOperationPanelView.m in Sources */,
 				99A391441E4C5AEE0063B989 /* AppDelegate.m in Sources */,
-				993F6B781E5551D40010846C /* EmojiPanelView.m in Sources */,
 				992D48651E4DBBF300D832E3 /* AutoGrowTextViewV2.m in Sources */,
 				99A391581E4C5B220063B989 /* BasicInputViewController.m in Sources */,
 				99A391411E4C5AEE0063B989 /* main.m in Sources */,
@@ -322,6 +345,7 @@
 				DEVELOPMENT_TEAM = S99AT867TC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ./InputExample/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = "./InputExample/TPEmojiLabel/**";
 				INFOPLIST_FILE = InputExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sfs.InputExample;
@@ -336,6 +360,7 @@
 				DEVELOPMENT_TEAM = S99AT867TC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ./InputExample/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = "./InputExample/TPEmojiLabel/**";
 				INFOPLIST_FILE = InputExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sfs.InputExample;

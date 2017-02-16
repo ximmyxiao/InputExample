@@ -48,6 +48,7 @@ typedef NS_ENUM(NSInteger,INPUT_KEYBOARD_TYPE) {
             case INPUT_KEYBOARD_TYPE_NONE:
                 self.panelHeightConstraint.constant = 0;
                 self.contentBottomConstraint.constant = 0;
+                [self.inputAccesoryView keyboardIsShow];
                 break;
             case INPUT_KEYBOARD_TYPE_KEYBOARD:
 //                self.panelHeightConstraint.constant = 0;
@@ -98,7 +99,7 @@ typedef NS_ENUM(NSInteger,INPUT_KEYBOARD_TYPE) {
     [self.contentView addSubview:self.inputAccesoryView];
     
     self.panelContainerView = [PanelsContainerView new];
-    self.panelContainerView.backgroundColor = [UIColor yellowColor];//HEXCOLOR(0xf3f4f6);
+    self.panelContainerView.backgroundColor = HEXCOLOR(0xf3f4f6);
     self.panelContainerView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [_contentView addSubview:self.panelContainerView];
