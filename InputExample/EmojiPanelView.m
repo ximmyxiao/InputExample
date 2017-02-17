@@ -8,8 +8,45 @@
 
 #import "EmojiPanelView.h"
 #import "EmojiManager.h"
-
 #define EMOJI_PER_PAGE (26)
+
+@interface EmojiPageView:UIView
+- (void)addEmojiItem:(NSString*) emojiItem;
+@end
+
+@interface EmojiPageView()
+@property(nonatomic,strong) NSMutableArray* allEmojiItems;
+@property(nonatomic,strong) NSMutableArray* allBtns;
+@end
+
+@implementation EmojiPageView
+
+- (void)addEmojiItem:(NSString *)emojiItem
+{
+    if (self.allEmojiItems == nil)
+    {
+        self.allEmojiItems = [NSMutableArray array];
+    }
+    
+    [self.allEmojiItems addObject:emojiItem];
+    
+    [self setNeedsUpdateConstraints];
+    [self setNeedsLayout];
+}
+
+- (void)updateConstraints
+{
+    [super updateConstraints];
+    [self.allBtns makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    for (NSString* item in self.allEmojiItems)
+    {
+        UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        btn = 
+    }
+}
+
+@end
+
 
 @interface EmojiPanelView()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property(nonatomic,strong) UICollectionView* collectionView;
@@ -28,11 +65,12 @@
 
 - (void)commonInit
 {
+    NSLog(@"EmojiPanelView commonInit");
     self.backgroundColor = [UIColor clearColor];
 
     UICollectionViewFlowLayout* layout = [UICollectionViewFlowLayout new];
     layout.itemSize = CGSizeMake(40, 40);
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     self.collectionView.backgroundColor = [UIColor clearColor];
@@ -84,33 +122,28 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    NSInteger pages =  (NSInteger)(ceil ([self.allEmojis count]*1.0 / EMOJI_PER_PAGE));
-    return pages;
+    NSInteger sectionCount = 0;
+    if ([self.allEmojis count] > 0)
+    {
+        sectionCount = 1;
+    }
+    return sectionCount;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSInteger pages =  (NSInteger)(ceil ([self.allEmojis count]*1.0 / EMOJI_PER_PAGE));
-    if (section < pages - 1)
-    {
-        return 26;
-    }
-    else if (section == pages - 1)
-    {
-        return [self.allEmojis count] % 26;
-    }
-    else
-    {
-        return 0;
-    }
+    return [self.allEmojis count] ;
+
 
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EmojiCell" forIndexPath:indexPath];
+    [[cell.contentView viewWithTag:'imgv'] removeFromSuperview];
     NSString* imageName = [NSString stringWithFormat:@"Expression_%ld",indexPath.row+1];
     UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    imageView.tag = 'imgv';
     [cell.contentView addSubview:imageView];
     return cell;
 }
