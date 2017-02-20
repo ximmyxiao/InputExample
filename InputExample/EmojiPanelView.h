@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface EmojiPanelView : UIView
-
+- (void)setEmojiArray:(NSArray*)emojiArray;
 @end

@@ -8,49 +8,153 @@
 
 #import "EmojiPanelView.h"
 #import "EmojiManager.h"
+
+#define EMOJI_LINE_SPACE (8)
+#define EMOJI_ITEM_SIZE (42)
 #define EMOJI_PER_PAGE (26)
+#define EMOJI_LEFT_RIGHT_PAD (18)
+#define EMOJI_TOP_PAD (18)
+#define EMOJI_ITEM_SPACE (0)
+//@interface EmojiPageView:UIView
+//- (void)addEmojiItem:(NSString*) emojiItem;
+//@end
+//
+//@interface EmojiPageView()
+//@property(nonatomic,strong) UIScrollView* scrollView;
+//@property(nonatomic,strong) NSArray* allEmojiItems;
+//@property(nonatomic,strong) NSMutableArray* allBtns;
+//@property(nonatomic,assign) NSInteger itemCount;
+//@end
+//
+//@implementation EmojiPageView
+//
+//- (void)setEmojiArray:(NSArray*)emojiArray
+//{
+//   
+//    self.allEmojiItems = emojiArray;
+//    
+//    
+//    [self setNeedsUpdateConstraints];
+//    [self setNeedsLayout];
+//}
+//
+//- (void)updateConstraints
+//{
+//    [super updateConstraints];
+//    [self.allBtns makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    NSInteger i = 0;
+//    NSInteger page = 0;
+//    NSInteger rowNum = 0;
+//    CGFloat xOrigin = EMOJI_LEFT_RIGHT_PAD;
+//    CGFloat yOrigin = EMOJI_TOP_PAD;
+//    for (NSString* item in self.allEmojiItems)
+//    {
+//        i++;
+//        UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        btn.translatesAutoresizingMaskIntoConstraints = NO;
+//        btn.tag = i;
+//        NSString* imageName = [NSString stringWithFormat:@"Expression_%ld",i];
+//        [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+//        [self.scrollView addSubview:btn];
+//        [self.allBtns addObject:btn];
+//        
+//        NSLayoutConstraint* topConstraint = [btn.topAnchor constraintEqualToAnchor:self.topAnchor constant:yOrigin];
+//        NSLayoutConstraint* leadingConstraint = [btn.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:xOrigin];
+//        NSLayoutConstraint* heightConstraint = [btn.heightAnchor constraintEqualToConstant:EMOJI_ITEM_SIZE];
+//        NSLayoutConstraint* widthConstraint = [btn.widthAnchor constraintEqualToConstant:EMOJI_ITEM_SIZE];
+//        
+//        [self.scrollView addConstraint:topConstraint];
+//        [self.scrollView addConstraint:leadingConstraint];
+//        [btn addConstraint:heightConstraint];
+//        [btn addConstraint:widthConstraint];
+//        
+//        xOrigin += (EMOJI_ITEM_SIZE + EMOJI_ITEM_SPACE);
+//        if (rowNum >= 2)
+//        {
+//            if (xOrigin + EMOJI_ITEM_SIZE > self.bounds.size.width - EMOJI_LEFT_RIGHT_PAD - (EMOJI_ITEM_SIZE + EMOJI_ITEM_SPACE))
+//            {
+//                //new a Page
+//                xOrigin = EMOJI_LEFT_RIGHT_PAD + self.bounds.size.width;
+//                yOrigin = EMOJI_TOP_PAD;
+//                rowNum = 0;
+//                page ++;
+//                
+//                
+//            }
+//            
+//        }
+//        if (xOrigin + EMOJI_ITEM_SIZE > self.bounds.size.width - EMOJI_LEFT_RIGHT_PAD)
+//        {
+//            if (rowNum >= 2)
+//            {
+//                break;
+//            }
+//            xOrigin = EMOJI_LEFT_RIGHT_PAD;
+//            yOrigin += (EMOJI_ITEM_SIZE+EMOJI_LINE_SPACE);
+//            rowNum ++;
+//        }
+//        
+//        
+//        
+//    }
+//    
+//    self.scrollView.contentSize = CGSizeMake(self.bounds.size.width* ceil(page), 0);
+//
+//}
+//
+//- (void)commonInit
+//{
+//    NSLog(@"EmojiPageView commonInit");
+//    self.backgroundColor = [UIColor clearColor];
+//    
+//    self.scrollView = [UIScrollView new];
+//    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+//    [self addSubview:self.scrollView];
+//    
+//    NSLayoutConstraint* topConstraint = [self.scrollView.topAnchor constraintEqualToAnchor:self.topAnchor];
+//    NSLayoutConstraint* bottomConstraint = [self.scrollView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor];
+//    NSLayoutConstraint* leadingConstraint = [self.scrollView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor];
+//    NSLayoutConstraint* trailingConstraint = [self.scrollView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor];
+//    
+//    [self addConstraint:topConstraint];
+//    [self addConstraint:bottomConstraint];
+//    [self addConstraint:leadingConstraint];
+//    [self addConstraint:trailingConstraint];
+//    
+//
+//    
+//}
+//
+//- (instancetype)initWithFrame:(CGRect)frame
+//{
+//    self = [super initWithFrame:frame];
+//    if (self)
+//    {
+//        [self commonInit];
+//    }
+//    
+//    return self;
+//}
+//
+//- (instancetype)initWithCoder:(NSCoder *)aDecoder
+//{
+//    self = [super initWithCoder:aDecoder];
+//    if (self)
+//    {
+//        [self commonInit];
+//    }
+//    
+//    return self;
+//}
+//
+//@end
 
-@interface EmojiPageView:UIView
-- (void)addEmojiItem:(NSString*) emojiItem;
-@end
 
-@interface EmojiPageView()
-@property(nonatomic,strong) NSMutableArray* allEmojiItems;
+@interface EmojiPanelView()
+@property(nonatomic,strong) UIScrollView* scrollView;
+@property(nonatomic,strong) NSArray* allEmojiItems;
 @property(nonatomic,strong) NSMutableArray* allBtns;
-@end
-
-@implementation EmojiPageView
-
-- (void)addEmojiItem:(NSString *)emojiItem
-{
-    if (self.allEmojiItems == nil)
-    {
-        self.allEmojiItems = [NSMutableArray array];
-    }
-    
-    [self.allEmojiItems addObject:emojiItem];
-    
-    [self setNeedsUpdateConstraints];
-    [self setNeedsLayout];
-}
-
-- (void)updateConstraints
-{
-    [super updateConstraints];
-    [self.allBtns makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    for (NSString* item in self.allEmojiItems)
-    {
-        UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        btn = 
-    }
-}
-
-@end
-
-
-@interface EmojiPanelView()<UICollectionViewDataSource,UICollectionViewDelegate>
-@property(nonatomic,strong) UICollectionView* collectionView;
-@property(nonatomic,strong) NSArray* allEmojis;
+@property(nonatomic,assign) NSInteger itemCount;
 @end
 
 @implementation EmojiPanelView
@@ -63,37 +167,102 @@
 }
 */
 
+- (void)setEmojiArray:(NSArray*)emojiArray
+{
+    
+    self.allEmojiItems = emojiArray;
+    
+    
+    [self setNeedsUpdateConstraints];
+    [self setNeedsLayout];
+}
+
+- (void)updateConstraints
+{
+    [super updateConstraints];
+    [self.allBtns makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    NSInteger i = 0;
+    NSInteger page = 1;
+    NSInteger rowNum = 0;
+    CGFloat xOrigin = EMOJI_LEFT_RIGHT_PAD;
+    CGFloat yOrigin = EMOJI_TOP_PAD;
+    for (NSString* item in self.allEmojiItems)
+    {
+        i++;
+        UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.translatesAutoresizingMaskIntoConstraints = NO;
+        btn.tag = i;
+        NSString* imageName = [NSString stringWithFormat:@"Expression_%ld",i];
+        [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        [self.scrollView addSubview:btn];
+        [self.allBtns addObject:btn];
+        
+        NSLayoutConstraint* topConstraint = [btn.topAnchor constraintEqualToAnchor:self.scrollView.topAnchor constant:yOrigin];
+        NSLayoutConstraint* leadingConstraint = [btn.leadingAnchor constraintEqualToAnchor:self.scrollView.leadingAnchor constant:xOrigin];
+        NSLayoutConstraint* heightConstraint = [btn.heightAnchor constraintEqualToConstant:EMOJI_ITEM_SIZE];
+        NSLayoutConstraint* widthConstraint = [btn.widthAnchor constraintEqualToConstant:EMOJI_ITEM_SIZE];
+        NSLog(@"x:%f",xOrigin);
+        [self.scrollView addConstraint:topConstraint];
+        [self.scrollView addConstraint:leadingConstraint];
+        [btn addConstraint:heightConstraint];
+        [btn addConstraint:widthConstraint];
+        
+        xOrigin += (EMOJI_ITEM_SIZE + EMOJI_ITEM_SPACE);
+        if (rowNum >= 2)
+        {
+            if (xOrigin + EMOJI_ITEM_SIZE > [[UIScreen mainScreen] bounds].size.width*page - EMOJI_LEFT_RIGHT_PAD - (EMOJI_ITEM_SIZE + EMOJI_ITEM_SPACE))
+            {
+                //new a Page
+                xOrigin = EMOJI_LEFT_RIGHT_PAD + [[UIScreen mainScreen] bounds].size.width*page;
+                yOrigin = EMOJI_TOP_PAD;
+                rowNum = 0;
+                page ++;
+
+                
+            }
+            
+        }
+        else if (xOrigin + EMOJI_ITEM_SIZE > [[UIScreen mainScreen] bounds].size.width*page - EMOJI_LEFT_RIGHT_PAD)
+        {
+            if (rowNum >= 2)
+            {
+                break;
+            }
+            xOrigin = EMOJI_LEFT_RIGHT_PAD + [[UIScreen mainScreen] bounds].size.width*(page - 1);
+            yOrigin += (EMOJI_ITEM_SIZE+EMOJI_LINE_SPACE);
+            rowNum ++;
+        }
+        
+        
+        
+    }
+    
+    self.scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width* ceil(page), 0);
+    
+}
+
 - (void)commonInit
 {
-    NSLog(@"EmojiPanelView commonInit");
+    NSLog(@"EmojiPageView commonInit");
     self.backgroundColor = [UIColor clearColor];
-
-    UICollectionViewFlowLayout* layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(40, 40);
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    self.collectionView.backgroundColor = [UIColor clearColor];
-
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"EmojiCell"];
-    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.collectionView.dataSource = self;
-    self.collectionView.delegate = self;
-    [self addSubview:self.collectionView];
     
-
+    self.scrollView = [UIScrollView new];
+    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.scrollView.pagingEnabled = YES;
+    [self addSubview:self.scrollView];
     
-    NSLayoutConstraint* topCVConstraint = [self.collectionView.topAnchor constraintEqualToAnchor:self.topAnchor];
-    NSLayoutConstraint* leadingCVConstraint = [self.collectionView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor];
-    NSLayoutConstraint* bottomCVConstraint = [self.collectionView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor];
-    NSLayoutConstraint* trailingCVConstraint = [self.collectionView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor];
+    NSLayoutConstraint* topConstraint = [self.scrollView.topAnchor constraintEqualToAnchor:self.topAnchor];
+    NSLayoutConstraint* bottomConstraint = [self.scrollView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor];
+    NSLayoutConstraint* leadingConstraint = [self.scrollView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor];
+    NSLayoutConstraint* trailingConstraint = [self.scrollView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor];
     
-    [self addConstraint:topCVConstraint];
-    [self addConstraint:leadingCVConstraint];
-    [self addConstraint:bottomCVConstraint];
-    [self addConstraint:trailingCVConstraint];
+    [self addConstraint:topConstraint];
+    [self addConstraint:bottomConstraint];
+    [self addConstraint:leadingConstraint];
+    [self addConstraint:trailingConstraint];
     
-    self.allEmojis = [EmojiManager shareInstance].kEmotionStringArray;
+    [self setEmojiArray:[EmojiManager shareInstance].kEmotionStringArray];
+    
     
     
 }
@@ -118,34 +287,6 @@
     }
     
     return self;
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    NSInteger sectionCount = 0;
-    if ([self.allEmojis count] > 0)
-    {
-        sectionCount = 1;
-    }
-    return sectionCount;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return [self.allEmojis count] ;
-
-
-}
-
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EmojiCell" forIndexPath:indexPath];
-    [[cell.contentView viewWithTag:'imgv'] removeFromSuperview];
-    NSString* imageName = [NSString stringWithFormat:@"Expression_%ld",indexPath.row+1];
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
-    imageView.tag = 'imgv';
-    [cell.contentView addSubview:imageView];
-    return cell;
 }
 
 
