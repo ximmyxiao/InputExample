@@ -150,7 +150,8 @@
 //@end
 
 
-@interface EmojiPanelView()
+@interface EmojiPanelView() <UIScrollViewDelegate>
+@property(nonatomic,strong) UIPageControl* pageControl;
 @property(nonatomic,strong) UIScrollView* scrollView;
 @property(nonatomic,strong) NSArray* allEmojiItems;
 @property(nonatomic,strong) NSMutableArray* allBtns;
@@ -171,15 +172,6 @@
 {
     
     self.allEmojiItems = emojiArray;
-    
-    
-    [self setNeedsUpdateConstraints];
-    [self setNeedsLayout];
-}
-
-- (void)updateConstraints
-{
-    [super updateConstraints];
     [self.allBtns makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSInteger i = 0;
     NSInteger page = 1;
@@ -201,7 +193,7 @@
         NSLayoutConstraint* leadingConstraint = [btn.leadingAnchor constraintEqualToAnchor:self.scrollView.leadingAnchor constant:xOrigin];
         NSLayoutConstraint* heightConstraint = [btn.heightAnchor constraintEqualToConstant:EMOJI_ITEM_SIZE];
         NSLayoutConstraint* widthConstraint = [btn.widthAnchor constraintEqualToConstant:EMOJI_ITEM_SIZE];
-        NSLog(@"x:%f",xOrigin);
+//        NSLog(@"x:%f",xOrigin);
         [self.scrollView addConstraint:topConstraint];
         [self.scrollView addConstraint:leadingConstraint];
         [btn addConstraint:heightConstraint];
@@ -217,7 +209,7 @@
                 yOrigin = EMOJI_TOP_PAD;
                 rowNum = 0;
                 page ++;
-
+                
                 
             }
             
@@ -238,12 +230,22 @@
     }
     
     self.scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width* ceil(page), 0);
+    self.pageControl.numberOfPages = page;
+    [self setNeedsUpdateConstraints];
+    [self setNeedsLayout];
+}
+
+- (void)updateConstraints
+{
+    [super updateConstraints];
+
     
 }
 
 - (void)commonInit
 {
     NSLog(@"EmojiPageView commonInit");
+    self.clipsToBounds = YES;
     self.backgroundColor = [UIColor clearColor];
     
     self.scrollView = [UIScrollView new];
@@ -261,10 +263,25 @@
     [self addConstraint:leadingConstraint];
     [self addConstraint:trailingConstraint];
     
-    [self setEmojiArray:[EmojiManager shareInstance].kEmotionStringArray];
     
+    self.pageControl = [UIPageControl new];
+    self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
+    self.pageControl.pageIndicatorTintColor = HEXCOLOR(0xd5d5d5);
+    self.pageControl.currentPageIndicatorTintColor = HEXCOLOR(0x8b8b8b);
+    [self addSubview:self.pageControl];
     
-    
+    NSLayoutConstraint* pageBottomConstraint = [self.pageControl.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:0];
+    NSLayoutConstraint* pageLeadingConstraint = [self.pageControl.leadingAnchor constraintEqualToAnchor:self.leadingAnchor];
+    NSLayoutConstraint* pageTrailingConstraint = [self.pageControl.trailingAnchor constraintEqualToAnchor:self.trailingAnchor];
+    NSLayoutConstraint* pageHeightConstraint = [self.pageControl.heightAnchor constraintLessThanOrEqualToConstant:20];
+
+    [self addConstraint:pageBottomConstraint];
+    [self addConstraint:pageLeadingConstraint];
+    [self addConstraint:pageTrailingConstraint];
+    [self addConstraint:pageHeightConstraint];
+
+    [self setEmojiArray:[EmojiManager shareInstance].kEmotionStringArray];//must be end of init;
+
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
