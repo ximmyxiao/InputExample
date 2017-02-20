@@ -273,12 +273,10 @@
     NSLayoutConstraint* pageBottomConstraint = [self.pageControl.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:0];
     NSLayoutConstraint* pageLeadingConstraint = [self.pageControl.leadingAnchor constraintEqualToAnchor:self.leadingAnchor];
     NSLayoutConstraint* pageTrailingConstraint = [self.pageControl.trailingAnchor constraintEqualToAnchor:self.trailingAnchor];
-    NSLayoutConstraint* pageHeightConstraint = [self.pageControl.heightAnchor constraintLessThanOrEqualToConstant:20];
 
     [self addConstraint:pageBottomConstraint];
     [self addConstraint:pageLeadingConstraint];
     [self addConstraint:pageTrailingConstraint];
-    [self addConstraint:pageHeightConstraint];
 
     [self setEmojiArray:[EmojiManager shareInstance].kEmotionStringArray];//must be end of init;
 
