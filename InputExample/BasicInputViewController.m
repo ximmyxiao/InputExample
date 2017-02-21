@@ -205,6 +205,11 @@ typedef NS_ENUM(NSInteger,INPUT_KEYBOARD_TYPE) {
     {
         [self.view endEditing:YES];
         self.inputType = INPUT_KEYBOARD_TYPE_PANEL;
+        [self.panelContainerView showPanel:operation];
+        if (operation == OPERATION_SHOW_MORE_MENU)
+        {
+            [self.inputAccesoryView keyboardIsShow];
+        }
     }
     else
     {

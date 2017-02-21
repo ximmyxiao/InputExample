@@ -247,7 +247,7 @@
 {
     NSLog(@"EmojiPageView commonInit");
     self.clipsToBounds = YES;
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = HEXCOLOR(0xf5f5f5);
     
     self.scrollView = [UIScrollView new];
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "EmojiPanelView.h"
+#import "InputAccessoryView.h"
 
 @interface PanelsContainerView : UIView
 @property(nonatomic,weak) id<EmojiPanelViewDelegate> delegate;
+- (void)showPanel:(INPUT_OPERATION_ENUM) panel;
 
 @end

@@ -74,6 +74,10 @@
     }
     
 }
+- (IBAction)moreBtnAction:(id)sender {
+    [self.delegate inputAccessoryViewDidSelect:OPERATION_SHOW_MORE_MENU];
+
+}
 
 - (void)keyboardIsShow
 {

@@ -12,6 +12,7 @@
 
 @interface PanelsContainerView()
 @property(nonatomic,strong) EmojiPanelView* emojiPanel;
+@property(nonatomic,strong) MoreOperationPanelView* morePanel;
 @end
 
 @implementation PanelsContainerView
@@ -47,6 +48,33 @@
     [self addConstraint:bottomEmojiConstraint];
     [self addConstraint:trailingEmojiConstraint];
     
+    
+    self.morePanel = [MoreOperationPanelView new];
+    self.morePanel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.morePanel];
+    
+    NSLayoutConstraint* topMoreConstraint = [self.morePanel.topAnchor constraintEqualToAnchor:self.topAnchor];
+    NSLayoutConstraint* leadingMoreConstraint = [self.morePanel.leadingAnchor constraintEqualToAnchor:self.leadingAnchor];
+    NSLayoutConstraint* bottomMoreConstraint = [self.morePanel.bottomAnchor constraintEqualToAnchor:self.bottomAnchor];
+    NSLayoutConstraint* trailingMoreConstraint = [self.morePanel.trailingAnchor constraintEqualToAnchor:self.trailingAnchor];
+    
+    [self addConstraint:topMoreConstraint];
+    [self addConstraint:leadingMoreConstraint];
+    [self addConstraint:bottomMoreConstraint];
+    [self addConstraint:trailingMoreConstraint];
+    
+    [self sendSubviewToBack:self.morePanel];
+    
+    OperationItem* item1 = [[OperationItem alloc] initWithTitle:@"照片" andImageName:@"PhotoIcon"];
+    OperationItem* item2 = [[OperationItem alloc] initWithTitle:@"拍摄" andImageName:@"CameraIcon"];
+    OperationItem* item3 = [[OperationItem alloc] initWithTitle:@"视频聊天" andImageName:@"VideoChatIcon"];
+    OperationItem* item4 = [[OperationItem alloc] initWithTitle:@"位置" andImageName:@"LocationIcon"];
+    OperationItem* item5 = [[OperationItem alloc] initWithTitle:@"语音输入" andImageName:@"VoiceInput"];
+    
+    NSArray* allItems = @[item1,item2,item3,item4,item5];
+    self.morePanel.allOperationItems = allItems;
+
+    
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -72,6 +100,16 @@
 }
 
 
-
+- (void)showPanel:(INPUT_OPERATION_ENUM) panel
+{
+    if (panel == OPERATION_SHOW_EMOJI)
+    {
+        [self bringSubviewToFront:self.emojiPanel];
+    }
+    else if (panel == OPERATION_SHOW_MORE_MENU)
+    {
+        [self bringSubviewToFront:self.morePanel];
+    }
+}
 
 @end

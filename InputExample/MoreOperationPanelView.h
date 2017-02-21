@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MoreOperationPanelView : UIView
+@interface OperationItem : NSObject
+@property(nonatomic,strong) NSString* title;
+@property(nonatomic,strong) NSString* imageName;
+- (instancetype)initWithTitle:(NSString*)title andImageName:(NSString*) imageName;
+@end
 
+@interface MoreOperationPanelView : UIView
+@property(nonatomic,strong) NSArray* allOperationItems;
 @end
