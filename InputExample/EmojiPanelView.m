@@ -307,7 +307,7 @@
 
 - (void)emojiTapped:(UIButton*)btn
 {
-    NSInteger tag = btn.tag;
+    NSInteger tag = btn.tag - 1;
     NSString* emojiContent = [[EmojiManager shareInstance] emotionStringFromLocalIndex:tag];
     if ([self.delegate respondsToSelector:@selector(didSelectEmojiContent:)])
     {
