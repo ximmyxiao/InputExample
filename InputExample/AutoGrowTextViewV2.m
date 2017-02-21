@@ -24,7 +24,7 @@
     if (self)
     {
         self.delegate = self;
-        self.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//        self.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
         self.font = [UIFont systemFontOfSize:16];
 
     }
@@ -41,9 +41,11 @@
 - (CGSize)intrinsicContentSize
 {
     CGSize size =  [self sizeThatFits:CGSizeMake(self.bounds.size.width, MAXFLOAT)];
+    self.scrollEnabled = NO;
     if (size.height > 98)
     {
         size = CGSizeMake(size.width, 98);
+        self.scrollEnabled = YES;
     }
     return size;
 }

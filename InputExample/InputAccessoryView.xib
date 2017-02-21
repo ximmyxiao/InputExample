@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="255" placeholderIntrinsicHeight="40" text="爱上飞机沙发空间按开房间啊及覅按时及覅既费时飞机爱谁就放大设计费按缴费卡电视剧覅大街上疯狂就爱上咖啡按时缴费卡上就付款案件发卡机福利卡设计费a" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T6w-83-H1i" customClass="AutoGrowTextViewV2">
-                    <rect key="frame" x="40" y="5" width="255" height="657"/>
+                    <rect key="frame" x="40" y="7" width="255" height="652"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -73,7 +73,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="1KV-Yo-lok" secondAttribute="bottom" constant="10" id="1pO-wa-hbN"/>
-                <constraint firstItem="T6w-83-H1i" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="2qJ-B6-QJD"/>
+                <constraint firstItem="T6w-83-H1i" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="2qJ-B6-QJD"/>
                 <constraint firstAttribute="bottom" secondItem="wLJ-wq-w9Z" secondAttribute="bottom" constant="10" id="9Go-5V-Lrc"/>
                 <constraint firstAttribute="bottom" secondItem="W9F-iG-2UN" secondAttribute="bottom" id="CaF-ri-mZd"/>
                 <constraint firstItem="Ii5-c1-PDq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DgB-mo-zYA"/>
@@ -81,7 +81,7 @@
                 <constraint firstAttribute="trailing" secondItem="T6w-83-H1i" secondAttribute="trailing" constant="80" id="ITZ-k2-Z0Q"/>
                 <constraint firstAttribute="trailing" secondItem="wLJ-wq-w9Z" secondAttribute="trailing" constant="4" id="TO4-LE-res"/>
                 <constraint firstAttribute="trailing" secondItem="W9F-iG-2UN" secondAttribute="trailing" id="UcL-EJ-Ur9"/>
-                <constraint firstAttribute="bottom" secondItem="T6w-83-H1i" secondAttribute="bottom" constant="5" id="VAs-jz-1xF"/>
+                <constraint firstAttribute="bottom" secondItem="T6w-83-H1i" secondAttribute="bottom" constant="8" id="VAs-jz-1xF"/>
                 <constraint firstItem="Ii5-c1-PDq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aLC-LH-xep"/>
                 <constraint firstItem="T6w-83-H1i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="fVc-md-aXh"/>
                 <constraint firstAttribute="bottom" secondItem="yOl-yh-73D" secondAttribute="bottom" constant="10" id="jPH-pu-BBV"/>
