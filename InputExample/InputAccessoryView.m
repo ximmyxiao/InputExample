@@ -95,10 +95,9 @@
     
 }
 
-//- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    
-//}
-//- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    
-//}
+- (void)didSelectEmojiContent:(NSString *)content
+{
+    self.textView.text = [NSString stringWithFormat:@"%@%@",self.textView.text,content];
+    [self textViewDidChange:self.textView];
+}
 @end

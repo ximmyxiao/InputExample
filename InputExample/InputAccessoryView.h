@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EmojiPanelView.h"
+
 typedef NS_ENUM(NSInteger,INPUT_OPERATION_ENUM) {
     OPERATION_SHOW_KEYBOARD = 0,
     OPERATION_SHOW_EMOJI,
@@ -21,7 +23,7 @@ typedef NS_ENUM(NSInteger,INPUT_OPERATION_ENUM) {
 
 @end
 
-@interface InputAccessoryView : UIView
+@interface InputAccessoryView : UIView<EmojiPanelViewDelegate>
 
 + (instancetype) InputAccessoryViewInstance;
 - (void)keyboardIsShow;

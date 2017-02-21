@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EmojiPanelView.h"
 
 @interface PanelsContainerView : UIView
+@property(nonatomic,weak) id<EmojiPanelViewDelegate> delegate;
 
 @end

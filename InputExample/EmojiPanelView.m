@@ -186,6 +186,7 @@
         btn.tag = i;
         NSString* imageName = [NSString stringWithFormat:@"Expression_%ld",i];
         [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(emojiTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self.scrollView addSubview:btn];
         [self.allBtns addObject:btn];
         
@@ -302,6 +303,16 @@
     }
     
     return self;
+}
+
+- (void)emojiTapped:(UIButton*)btn
+{
+    NSInteger tag = btn.tag;
+    NSString* emojiContent = [[EmojiManager shareInstance] emotionStringFromLocalIndex:tag];
+    if ([self.delegate respondsToSelector:@selector(didSelectEmojiContent:)])
+    {
+        [self.delegate didSelectEmojiContent:emojiContent];
+    }
 }
 
 

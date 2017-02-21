@@ -23,7 +23,11 @@
     // Drawing code
 }
 */
-
+- (void)setDelegate:(id<EmojiPanelViewDelegate>)delegate
+{
+    _delegate = delegate;
+    self.emojiPanel.delegate = self.delegate;
+}
 - (void)commonInit
 {
     NSLog(@"commonInit");

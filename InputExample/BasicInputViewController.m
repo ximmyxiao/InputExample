@@ -101,7 +101,7 @@ typedef NS_ENUM(NSInteger,INPUT_KEYBOARD_TYPE) {
     self.panelContainerView = [PanelsContainerView new];
     self.panelContainerView.backgroundColor = HEXCOLOR(0xf3f4f6);
     self.panelContainerView.translatesAutoresizingMaskIntoConstraints = NO;
-    
+    self.panelContainerView.delegate = self.inputAccesoryView;
     [_contentView addSubview:self.panelContainerView];
     
     
