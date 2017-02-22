@@ -19,6 +19,7 @@
 		99A3914F1E4C5AEF0063B989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3914D1E4C5AEF0063B989 /* LaunchScreen.storyboard */; };
 		99A391581E4C5B220063B989 /* BasicInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A391571E4C5B220063B989 /* BasicInputViewController.m */; };
 		99A3915B1E4C5B5E0063B989 /* InputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A3915A1E4C5B5E0063B989 /* InputAccessoryView.m */; };
+		99AF58081E5D68860035C2A2 /* MessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99AF58071E5D68860035C2A2 /* MessageTableView.m */; };
 		99E26AD11E55900800F6C2B4 /* EmojiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E26ACD1E55900800F6C2B4 /* EmojiManager.m */; };
 		99E26AD21E55900800F6C2B4 /* TPQEmojiLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E26ACF1E55900800F6C2B4 /* TPQEmojiLabel.m */; };
 		99E26AD81E55905300F6C2B4 /* EmojiPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E26AD51E55905300F6C2B4 /* EmojiPanelView.m */; };
@@ -152,6 +153,8 @@
 		99A391571E4C5B220063B989 /* BasicInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInputViewController.m; sourceTree = "<group>"; };
 		99A391591E4C5B5E0063B989 /* InputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputAccessoryView.h; sourceTree = "<group>"; };
 		99A3915A1E4C5B5E0063B989 /* InputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputAccessoryView.m; sourceTree = "<group>"; };
+		99AF58061E5D68860035C2A2 /* MessageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableView.h; sourceTree = "<group>"; };
+		99AF58071E5D68860035C2A2 /* MessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableView.m; sourceTree = "<group>"; };
 		99E26ACC1E55900800F6C2B4 /* EmojiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmojiManager.h; path = TPEmojiLabel/EmojiManager.h; sourceTree = "<group>"; };
 		99E26ACD1E55900800F6C2B4 /* EmojiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmojiManager.m; path = TPEmojiLabel/EmojiManager.m; sourceTree = "<group>"; };
 		99E26ACE1E55900800F6C2B4 /* TPQEmojiLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPQEmojiLabel.h; path = TPEmojiLabel/TPQEmojiLabel.h; sourceTree = "<group>"; };
@@ -297,6 +300,7 @@
 		99A3913E1E4C5AEE0063B989 /* InputExample */ = {
 			isa = PBXGroup;
 			children = (
+				99AF58051E5D68450035C2A2 /* MessageTableView */,
 				99AF57E31E5BEB6D0035C2A2 /* InputBar */,
 				99AF57E41E5BEB940035C2A2 /* InputOperationPanel */,
 				99E26AD31E55901200F6C2B4 /* EmojiHelper */,
@@ -347,6 +351,15 @@
 				99E26AD71E55905300F6C2B4 /* PanelsContainerView.m */,
 			);
 			name = InputOperationPanel;
+			sourceTree = "<group>";
+		};
+		99AF58051E5D68450035C2A2 /* MessageTableView */ = {
+			isa = PBXGroup;
+			children = (
+				99AF58061E5D68860035C2A2 /* MessageTableView.h */,
+				99AF58071E5D68860035C2A2 /* MessageTableView.m */,
+			);
+			name = MessageTableView;
 			sourceTree = "<group>";
 		};
 		99E26AD31E55901200F6C2B4 /* EmojiHelper */ = {
@@ -653,6 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99E26AD91E55905300F6C2B4 /* PanelsContainerView.m in Sources */,
+				99AF58081E5D68860035C2A2 /* MessageTableView.m in Sources */,
 				99E26AD11E55900800F6C2B4 /* EmojiManager.m in Sources */,
 				99A391471E4C5AEE0063B989 /* ViewController.m in Sources */,
 				99E26AD21E55900800F6C2B4 /* TPQEmojiLabel.m in Sources */,
